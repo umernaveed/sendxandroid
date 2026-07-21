@@ -54,6 +54,8 @@ android/**/local.properties
 # Signing credentials and private keys
 *.p8
 android/key.properties
+android/upload_key_credentials.txt
+android/upload_certificate.pem
 ios/AuthKey_*.p8
 *.jks
 *.keystore
