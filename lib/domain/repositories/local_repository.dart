@@ -12,4 +12,7 @@ abstract class LocalRepository {
   Future<String> getMobileCacheVersion();
   Future<void> saveMobileCacheVersion(String version);
   Future<void> clearCacheKeepingSession();
+  Future<String> getInstalledAppVersion();
+  Future<void> saveInstalledAppVersion(String version);
+  Future<void> clearAllLocalData();
 }

@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:package_info_plus/package_info_plus.dart';
 import 'package:sendx/app/core/routes/app_pages.dart';
 import 'package:sendx/data/models/app_meta/app_meta.dart';
 import 'package:sendx/domain/repositories/local_repository.dart';
@@ -68,12 +69,29 @@ class OnBoardingController extends GetxController {
 
   Future<void> proceedFurther() async {
     try {
+      await _clearAppDataAfterUpdateIfNeeded();
       final isLoggedIN = await _isLoggedIn();
       if (isLoggedIN) {
         Get.offAllNamed(AppPages.bottomNav);
       } else {
         Get.offAllNamed(AppPages.login);
       }
+    } catch (_) {}
+  }
+
+  Future<void> _clearAppDataAfterUpdateIfNeeded() async {
+    try {
+      final packageInfo = await PackageInfo.fromPlatform();
+      final currentVersion =
+          '${packageInfo.version}+${packageInfo.buildNumber}';
+      final storedVersion = await _localRepository.getInstalledAppVersion();
+
+      if (storedVersion == currentVersion) {
+        return;
+      }
+
+      await _localRepository.clearAllLocalData();
+      await _localRepository.saveInstalledAppVersion(currentVersion);
     } catch (_) {}
   }
 }

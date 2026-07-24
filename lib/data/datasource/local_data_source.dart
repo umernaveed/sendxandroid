@@ -79,6 +79,20 @@ class LocalDataSourceImp implements LocalDataSource {
   }
 
   @override
+  Future<String> getInstalledAppVersion() async {
+    final r = _localClient.appBox.get(
+      'installed_app_version',
+      defaultValue: '',
+    );
+    return r.toString();
+  }
+
+  @override
+  Future<void> saveInstalledAppVersion(String version) async {
+    await _localClient.appBox.put('installed_app_version', version);
+  }
+
+  @override
   Future<void> clearCacheKeepingSession() async {
     final user = await getUser();
     final loggedIn = await isLoggedIn();
@@ -90,6 +104,12 @@ class LocalDataSourceImp implements LocalDataSource {
     await _localClient.appBox.put('user', user);
     await _localClient.appBox.put('is_logged_in', loggedIn);
     await _localClient.appBox.put('mobile_cache_version', cacheVersion);
+  }
+
+  @override
+  Future<void> clearAllLocalData() async {
+    await _localClient.clearBox();
+    await DefaultCacheManager().emptyCache();
   }
 }
 

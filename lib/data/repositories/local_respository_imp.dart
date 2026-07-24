@@ -62,4 +62,19 @@ class LocalRepositoryImp implements LocalRepository {
   Future<void> clearCacheKeepingSession() {
     return _localDataSource.clearCacheKeepingSession();
   }
+
+  @override
+  Future<String> getInstalledAppVersion() {
+    return _localDataSource.getInstalledAppVersion();
+  }
+
+  @override
+  Future<void> saveInstalledAppVersion(String version) {
+    return _localDataSource.saveInstalledAppVersion(version);
+  }
+
+  @override
+  Future<void> clearAllLocalData() {
+    return _localDataSource.clearAllLocalData();
+  }
 }
