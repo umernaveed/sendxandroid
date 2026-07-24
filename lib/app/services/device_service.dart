@@ -19,7 +19,7 @@ class DeviceInfoProvider {
   static const String _iosLink =
       'https://apps.apple.com/us/app/sendx-ja/id6743345579';
   static const String _androidLink =
-      'https://play.google.com/store/apps/details?id=com.sendx.app';
+      'https://play.google.com/store/apps/details?id=com.sendxm.app';
 
   void init() async {
     return switch (defaultTargetPlatform) {

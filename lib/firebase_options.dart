@@ -63,6 +63,6 @@ class DefaultFirebaseOptions {
     messagingSenderId: '445190259963',
     projectId: 'sendx-83d4c',
     storageBucket: 'sendx-83d4c.firebasestorage.app',
-    iosBundleId: 'com.sendx.app',
+    iosBundleId: 'com.sendxm.app',
   );
 }

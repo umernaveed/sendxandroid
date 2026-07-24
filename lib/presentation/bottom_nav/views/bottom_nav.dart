@@ -16,37 +16,34 @@ class BottomNavScreen extends GetView<BottomNavController> {
     return BaseScreen(
       value: SystemUiOverlayStyle.dark,
       showGradients: true,
-      extendBody: true,
+      extendBody: false,
       wrapWithAnnotatedRegion: true,
-      body: Container(
-        margin: EdgeInsets.only(bottom: 10.h),
-        child: Navigator(
-          key: Get.nestedKey(controller.bottomNavNestedID),
-          onGenerateRoute: (settings) {
-            Get.routing.args = settings.arguments;
-            final page = AppRoutes.routes.firstWhere(
-              (r) => r.name == settings.name,
-            );
-            return GetPageRoute<dynamic>(
-              page: page.page,
-              settings: settings,
-              binding: page.binding,
-              transition: page.transition,
-              parameter: page.parameters,
-              opaque: page.opaque,
-              popGesture: page.popGesture,
-              fullscreenDialog: page.fullscreenDialog,
-              maintainState: page.maintainState,
-              curve: page.curve,
-              middlewares: page.middlewares,
-            );
-          },
-        ),
+      body: Navigator(
+        key: Get.nestedKey(controller.bottomNavNestedID),
+        onGenerateRoute: (settings) {
+          Get.routing.args = settings.arguments;
+          final page = AppRoutes.routes.firstWhere(
+            (r) => r.name == settings.name,
+          );
+          return GetPageRoute<dynamic>(
+            page: page.page,
+            settings: settings,
+            binding: page.binding,
+            transition: page.transition,
+            parameter: page.parameters,
+            opaque: page.opaque,
+            popGesture: page.popGesture,
+            fullscreenDialog: page.fullscreenDialog,
+            maintainState: page.maintainState,
+            curve: page.curve,
+            middlewares: page.middlewares,
+          );
+        },
       ),
       bottomNavigationBar: Container(
-        height: 11.5.h,
-        margin: EdgeInsets.fromLTRB(3.w, 0, 3.w, 1.2.h),
-        padding: EdgeInsets.only(top: 0.7.h),
+        height: 9.8.h,
+        margin: EdgeInsets.fromLTRB(3.w, 0, 3.w, 1.1.h),
+        padding: EdgeInsets.only(top: 0.25.h),
         decoration: BoxDecoration(
           color: Colors.white.withOpacity(0.96),
           borderRadius: BorderRadius.circular(26),
@@ -71,93 +68,93 @@ class BottomNavScreen extends GetView<BottomNavController> {
               items: [
                 BottomNavigationBarItem(
                   activeIcon: Padding(
-                    padding: EdgeInsets.only(bottom: 0.4.h, top: 0.8.h),
+                    padding: EdgeInsets.only(bottom: 0.25.h, top: 0.35.h),
                     child: SvgPicture.asset(
                       'assets/svgs/ic_home.svg',
                       color: AppColors.cyan,
-                      height: 2.h,
+                      height: 2.2.h,
                     ),
                   ),
                   icon: Padding(
-                    padding: EdgeInsets.only(bottom: 0.4.h, top: 0.8.h),
+                    padding: EdgeInsets.only(bottom: 0.25.h, top: 0.35.h),
                     child: SvgPicture.asset(
                       'assets/svgs/ic_home.svg',
-                      height: 2.h,
+                      height: 2.2.h,
                     ),
                   ),
                   label: 'Dashboard',
                 ),
                 BottomNavigationBarItem(
                   activeIcon: Padding(
-                    padding: EdgeInsets.only(bottom: 0.4.h, top: 0.8.h),
-                    child: SvgPicture.asset(
-                      'assets/svgs/ic_person.svg',
+                    padding: EdgeInsets.only(bottom: 0.25.h, top: 0.35.h),
+                    child: Icon(
+                      Icons.location_on_outlined,
                       color: AppColors.cyan,
-                      height: 2.h,
+                      size: 2.45.h,
                     ),
                   ),
                   icon: Padding(
-                    padding: EdgeInsets.only(bottom: 0.4.h, top: 0.8.h),
-                    child: SvgPicture.asset(
-                      'assets/svgs/ic_person.svg',
-                      height: 2.h,
+                    padding: EdgeInsets.only(bottom: 0.25.h, top: 0.35.h),
+                    child: Icon(
+                      Icons.location_on_outlined,
+                      size: 2.45.h,
                     ),
                   ),
-                  label: 'Authorize User',
+                  label: 'Addresses',
                 ),
                 BottomNavigationBarItem(
                   activeIcon: Padding(
-                    padding: EdgeInsets.only(bottom: 0.4.h, top: 0.8.h),
-                    child: SvgPicture.asset(
-                      'assets/svgs/ic_delivery.svg',
+                    padding: EdgeInsets.only(bottom: 0.25.h, top: 0.35.h),
+                    child: Icon(
+                      Icons.local_shipping_outlined,
                       color: AppColors.cyan,
-                      height: 2.h,
+                      size: 2.55.h,
                     ),
                   ),
                   icon: Padding(
-                    padding: EdgeInsets.only(bottom: 0.4.h, top: 0.8.h),
-                    child: SvgPicture.asset(
-                      'assets/svgs/ic_delivery.svg',
-                      height: 2.h,
+                    padding: EdgeInsets.only(bottom: 0.25.h, top: 0.35.h),
+                    child: Icon(
+                      Icons.local_shipping_outlined,
+                      size: 2.55.h,
                     ),
                   ),
                   label: 'Delivery',
                 ),
                 BottomNavigationBarItem(
                   activeIcon: Padding(
-                    padding: EdgeInsets.only(bottom: 0.4.h, top: 0.8.h),
+                    padding: EdgeInsets.only(bottom: 0.25.h, top: 0.35.h),
                     child: Icon(
-                      Icons.newspaper,
+                      Icons.calendar_month_outlined,
                       color: AppColors.cyan,
-                      size: 2.3.h,
+                      size: 2.55.h,
                     ),
                   ),
                   icon: Padding(
-                    padding: EdgeInsets.only(bottom: 0.4.h, top: 0.8.h),
+                    padding: EdgeInsets.only(bottom: 0.25.h, top: 0.35.h),
                     child: Icon(
-                      Icons.newspaper,
-                      size: 2.3.h,
+                      Icons.calendar_month_outlined,
+                      size: 2.55.h,
                     ),
                   ),
                   label: 'News',
                 ),
                 BottomNavigationBarItem(
                   activeIcon: Padding(
-                    padding: EdgeInsets.only(bottom: 0.4.h, top: 0.8.h),
-                    child: SvgPicture.asset(
-                      'assets/svgs/ic_account.svg',
+                    padding: EdgeInsets.only(bottom: 0.25.h, top: 0.35.h),
+                    child: Icon(
+                      Icons.headset_mic_outlined,
                       color: AppColors.cyan,
-                      height: 2.h,
+                      size: 2.55.h,
                     ),
                   ),
                   icon: Padding(
-                    padding: EdgeInsets.only(bottom: 0.4.h, top: 0.8.h),
-                    child: SvgPicture.asset(
-                      'assets/svgs/ic_account.svg',
-                      height: 2.h,
+                    padding: EdgeInsets.only(bottom: 0.25.h, top: 0.35.h),
+                    child: Icon(
+                      Icons.headset_mic_outlined,
+                      size: 2.55.h,
                     ),
                   ),
-                  label: 'Account',
+                  label: 'Support',
                 ),
               ],
             ),

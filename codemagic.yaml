@@ -19,6 +19,6 @@ workflows:
           storeFile=$CM_KEYSTORE_PATH
           EOF
       - name: Build Android App Bundle
-        script: flutter build appbundle --release --build-name=1.0.26 --build-number=26
+        script: flutter build appbundle --release --build-name=1.0.27 --build-number=28
     artifacts:
       - build/app/outputs/bundle/release/app-release.aab
